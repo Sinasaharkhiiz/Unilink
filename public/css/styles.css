@@ -1,10 +1,10 @@
 @font-face {
     font-family: "Yekan";
-    src: url(includes/fonts/Yekan.eot);
-    src: url(includes/fonts/Yekan.eot?#iefix) format("embedded-opentype"),
-         url(includes/fonts/Yekan.woff) format("woff"),
-         url(includes/fonts/Yekan.ttf) format("truetype"),
-         url(includes/fonts/Yekan.svg#BYekan) format("svg");
+    src: url(http://127.0.0.1:8000/includes/fonts/Yekan.eot);
+    src: url(http://127.0.0.1:8000/includes/fonts/Yekan.eot?#iefix) format("embedded-opentype"),
+         url(http://127.0.0.1:8000/includes/fonts/Yekan.woff) format("woff"),
+         url(http://127.0.0.1:8000/includes/fonts/Yekan.ttf) format("truetype"),
+         url(http://127.0.0.1:8000/includes/fonts/Yekan.svg#BYekan) format("svg");
     font-weight: normal;
     font-style: normal
 }
@@ -13,7 +13,10 @@
     
     font-family: Yekan, Tahoma !important;
 }
-
+body {
+    
+    background-image: url("http://127.0.0.1:8000/pic1.jpg");
+}
 html {
     position: relative;
     min-height: 100%;

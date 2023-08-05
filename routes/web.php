@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.master');
 });
+Route::get('/home', function () {
+    return view('home');
+});
+Route::get('logout', function ()
+{
+    auth()->logout();
+    Session()->flush();
+    return view('home');
+})->name('logout');
