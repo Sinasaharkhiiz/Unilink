@@ -33,5 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     });
+    Route::get('/add_course', function () {
+        return view('course.add_course');
+    });
    
 });
