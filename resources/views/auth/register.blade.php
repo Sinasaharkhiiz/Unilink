@@ -37,6 +37,16 @@
                     <label class="form-label" for="name">نام</label>
                 </div>
 
+                <div class="form-outline form-white mb-4">
+                  <input type="text" name="username" id="username" style="text-align: center" class="form-control form-control-lg @error('username') is-invalid @enderror" value="{{ old('username') }}" required autocomplete="username" autofocus />
+                    @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                    @enderror
+                  <label class="form-label" for="username">نام کاربری</label>
+                </div>
+
 
                 <div class="form-outline form-white mb-4">
                   <input type="email" name="email" id="typeEmailX" style="text-align: center" class="form-control form-control-lg @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus />

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('home');
 });
 Route::get('/home', function () {
     return view('home');
@@ -25,3 +25,13 @@ Route::get('logout', function ()
     Session()->flush();
     return view('home');
 })->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', function () {
+        return view('user-profile.profile');
+    });
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
+   
+});
