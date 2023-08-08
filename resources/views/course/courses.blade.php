@@ -47,7 +47,11 @@
         </div>
         @endforeach
         @else
-        <li class="list-group-item list-group-item-danger">User Not Found.</li>
+        <div style="width:100%; height:300px" class=" d-flex  justify-content-center align-items-center">
+          <h2 class="text-light" style="margin-left: 25px">404</h2>
+          <div class="vl" ></div>
+          <h2 class="text-light">متاسفانه جزوه ای با عنوان ورودی شما یافت نشد</h2>
+        </div>
         @endif
       </div>
       {{$c_data->links('vendor.pagination.bootstrap-5')}}
