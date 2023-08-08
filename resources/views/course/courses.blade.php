@@ -45,8 +45,8 @@
           </div>
         </div>
         @endforeach
-        {{$c_data->links()}}
       </div>
+      {{$c_data->links('vendor.pagination.bootstrap-5')}}
     </div>
   </div>
 
