@@ -20,7 +20,7 @@ unilink
               <div class="carousel-caption text-start">
                 <h1>جزوات آموزشی</h1>
                 <p class="opacity-75">بیش از 4 هزار جزوه آموزشی از دانشجویان سراسر کشور</p>
-                <p><a class="btn btn-outline-light" href="#">مشاهده جزوات</a></p>
+                <p><a class="btn btn-outline-light" href="courses">مشاهده جزوات</a></p>
               </div>
             </div>
           </div>

@@ -13,7 +13,8 @@
         <!-- Additional CSS -->
         <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
 
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+
     </head>
     <title>
         @yield('title')
@@ -31,7 +32,7 @@
                   </li>
                 </ul>
                 <form class="d-flex" role="search" style="margin-left: auto;" >
-                  <input class="form-control me-2" type="search" placeholder="دنبال چی میگردی؟" aria-label="Search" style="width: 326px">
+                  <input class="form-control me-2" type="search" placeholder="دنبال چی میگردی؟" aria-label="Search" style="width: 276px">
                   <button class="btn btn-outline-primary" type="submit">جستجو</button>
                 </form>
                 @if (Auth::check())
@@ -78,7 +79,7 @@
       <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
         <img src="pic2.png " style="margin-right:auto margin_left:auto; width: 100px;">
       </a>
-      <span class="mb-3 mb-md-0 text-light">&copy; 2023 Unilink, Inc</span>
+      <span class="mb-3 mb-md-0 text-light">&copy; 2023 Uni link, Inc</span>
     </div>
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">

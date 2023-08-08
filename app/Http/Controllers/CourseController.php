@@ -31,16 +31,18 @@ class CourseController extends Controller
     {
         $course = new Course;
         $fileName = $req->input('name').rand(100,1000).".pdf";
-        $course_cover = $req->input('name').rand(100,1000).".png";
         $course->price=$req->input('price');
         $course->name=$req->input('name');
         $course->content=$req->file('content')->storeAs('courses',$fileName , 'public');
-        $course->content=$req->file('cover')->storeAs('courses_cover',$fileName , 'public');
+        if($req->hasFile('cover')){
+            $course_cover = $req->input('name').rand(100,1000).".png";
+            $course->content=$req->file('cover')->storeAs('courses_cover',$fileName , 'public');
+        }
         $course->description = $req->input('description');
         $course->date= now()->format('Y-m-d');
         $course->publisher_id = Auth::user()->id;
         $course->save();
-        return redirect('courses');
+        return redirect('home');
     }
 
     /**

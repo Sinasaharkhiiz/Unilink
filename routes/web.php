@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Course;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,10 @@ Route::get('logout', function ()
     Session()->flush();
     return view('home');
 })->name('logout');
+Route::get('/courses', function () {
+    $c_data = Course::paginate(9);
+    return view('course.courses', ['c_data'=> $c_data]);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', function () {
@@ -36,5 +42,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/add_course', function () {
         return view('course.add_course');
     });
+    Route::post('/add_course',[CourseController::class, 'store']);
    
 });
