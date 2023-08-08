@@ -28,8 +28,14 @@ Route::get('logout', function ()
     return view('home');
 })->name('logout');
 Route::get('/courses', function () {
-    $c_data = Course::paginate(9);
+    if (request('search')) {
+        $c_data = Course::where('name', 'like', '%' . request('search') . '%')->paginate(9);
+    } else {
+        $c_data = Course::paginate(9);
+    }
+
     return view('course.courses', ['c_data'=> $c_data]);
+
 });
 
 Route::middleware('auth')->group(function () {

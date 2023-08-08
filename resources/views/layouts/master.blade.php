@@ -31,8 +31,8 @@
                     <a class="navbar-brand active" aria-current="page" href="home">Unilnk</a>
                   </li>
                 </ul>
-                <form class="d-flex" role="search" style="margin-left: auto;" >
-                  <input class="form-control me-2" type="search" placeholder="دنبال چی میگردی؟" aria-label="Search" style="width: 276px">
+                <form class="d-flex" role="search" method="GET" style="margin-left: auto;" >
+                  <input class="form-control me-2" type="search" name="search" placeholder="دنبال چی میگردی؟"   value="{{ request('search') }}" aria-label="Search" style="width: 276px">
                   <button class="btn btn-outline-primary" type="submit">جستجو</button>
                 </form>
                 @if (Auth::check())
