@@ -33,7 +33,6 @@ Route::get('/courses', function () {
     } else {
         $c_data = Course::paginate(9);
     }
-
     return view('course.courses', ['c_data'=> $c_data]);
 
 });

@@ -17,6 +17,7 @@
   <div class="album py-3" style="background-color: rgba(22, 24, 22, 0.5);">
     <div class="container" >
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @if($c_data->total() != 0)
         @foreach ($c_data as $ket => $value)
         <div class="col">
           <div class="card shadow-sm bg-dark">
@@ -45,6 +46,9 @@
           </div>
         </div>
         @endforeach
+        @else
+        <li class="list-group-item list-group-item-danger">User Not Found.</li>
+        @endif
       </div>
       {{$c_data->links('vendor.pagination.bootstrap-5')}}
     </div>
