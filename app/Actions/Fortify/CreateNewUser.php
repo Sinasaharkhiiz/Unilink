@@ -39,4 +39,9 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
     }
+
+    public function show_user_profile()
+    {
+        return view('user-profile.profile');
+    }
 }

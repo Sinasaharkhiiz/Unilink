@@ -76,4 +76,19 @@ class CourseController extends Controller
     {
         //
     }
+    public function show_add_course()
+    {
+        return view('course.add_course');
+    }
+
+    public function show_courses()
+    {
+        if (request('search')) {
+            $c_data = Course::where('name', 'like', '%' . request('search') . '%')->paginate(9);
+        } else {
+            $c_data = Course::paginate(9);
+        }
+        return view('course.courses', ['c_data'=> $c_data]);
+    }
+
 }

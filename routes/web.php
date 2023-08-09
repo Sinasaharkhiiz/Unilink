@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Course;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\CourseController;
 
 /*
@@ -18,35 +20,13 @@ use App\Http\Controllers\CourseController;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/home', function () {
-    return view('home');
-});
-Route::get('logout', function ()
-{
-    auth()->logout();
-    Session()->flush();
-    return view('home');
-})->name('logout');
-Route::get('/courses', function () {
-    if (request('search')) {
-        $c_data = Course::where('name', 'like', '%' . request('search') . '%')->paginate(9);
-    } else {
-        $c_data = Course::paginate(9);
-    }
-    return view('course.courses', ['c_data'=> $c_data]);
-
-});
+Route::get('/home',[Controller::class, 'show_home']);
+Route::get('logout',[Controller::class, 'show_logout']);
+Route::get('/courses',[CourseController::class, 'show_courses']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', function () {
-        return view('user-profile.profile');
-    });
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
-    Route::get('/add_course', function () {
-        return view('course.add_course');
-    });
+    Route::get('/profile',[CreateNewUser::class, 'show_user_profile']);
+    Route::get('/dashboard',[Controller::class, 'show_dashboard']);
+    Route::get('/add_course',[CourseController::class, 'show_add_course']);
     Route::post('/add_course',[CourseController::class, 'store']);
-   
 });
