@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -91,4 +92,10 @@ class CourseController extends Controller
         return view('course.courses', ['c_data'=> $c_data]);
     }
 
+    public function show_course()
+    {
+        $c_data = Course::find($_GET['id']);
+        $p_data = User::find($c_data->publisher_id);
+        return view('course.course', ['c_data'=> $c_data,'p_data'=>$p_data]);
+    }
 }

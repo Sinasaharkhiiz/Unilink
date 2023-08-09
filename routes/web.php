@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Course;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard',[Controller::class, 'show_dashboard']);
     Route::get('/add_course',[CourseController::class, 'show_add_course']);
     Route::post('/add_course',[CourseController::class, 'store']);
+    Route::get('/course',[CourseController::class, 'show_course']);
+
 });
