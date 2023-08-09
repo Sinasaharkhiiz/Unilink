@@ -54,7 +54,7 @@
         </div>
         @endif
       </div>
-      {{$c_data->links('vendor.pagination.bootstrap-5')}}
+      {{$c_data->appends(['search' => request('search')])->links('vendor.pagination.bootstrap-5')}}
     </div>
   </div>
 
