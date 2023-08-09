@@ -20,7 +20,7 @@
         @yield('title')
     </title>
     <body>
-        <nav class="navbar bg-primary navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" >
+        <nav class="navbar fixed-top bg-primary navbar-expand-lg bg-body-tertiary" style="margin-bottom: 40px" data-bs-theme="dark" >
             <div class="container-fluid">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
                 </ul>
                 <form class="d-flex" role="search" method="GET" style="margin-left: auto;" >
                   <input class="form-control me-2" type="search" name="search" placeholder="دنبال چی میگردی؟"   value="{{ request('search') }}" aria-label="Search" style="width: 276px">
-                  <button class="btn btn-outline-primary" type="submit">جستجو</button>
+                  <button class="btn btn-outline-info" type="submit">جستجو</button>
                 </form>
                 @if (Auth::check())
                 <ul class="navbar-nav  dropstart" >
@@ -68,9 +68,9 @@
             </div>
           </nav>
     
-
+<div style="margin-top: 55px;">
  @yield('content')
-
+</div>
  <script src="{{ asset('js/bootstrap.bundle.js') }}" defer></script>
 </body>
 <div class="container" style="margin-top: 50px">
