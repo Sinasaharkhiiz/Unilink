@@ -42,8 +42,9 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3"></div>
-                            <div class="col-sm-9 text-secondary">
+                            <div class="col-sm-9 text-secondary" id="comments">
                                 <input type="button" class="btn btn-outline-info px-4" value="افزودن به سبد خرید">
+                                <input type="button" class="btn btn-outline-light px-4" value="نظر دادن">
                             </div>
                         </div>
                     </div>
@@ -126,6 +127,36 @@
             </div>
         </div>
     </div>
+    <hr class="text-light" id="comments">
+    <div class="col-lg-8">
+        <div style="background-color: rgba(22, 24, 22, 0.5)" >
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h3 class="mb-0 text-light">نظرات:</h3>
+                    </div>
+                </div>
+                @foreach ($co_data as $key => $value)
+                <div class="row mb-3">
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-10 text-secondary">
+                        <div class="mb-0" style="background-color: rgba(22, 24, 22, 0.9)">
+                            <div style="margin-right: 10px">{{$value->name}}</div>
+                            <br>
+                            <h5 class="text-light" style="margin-right: 20px">{{$value->comment}}</h5>
+                            <div style="text-align: left; margin-left: 10px">
+                                {{$value->date}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            {{$co_data->appends(['id' => request('id')])->fragment('comments')->links('vendor.pagination.bootstrap-5')}}
+        </div>
+    </div>
+    
 </div>
                 
          

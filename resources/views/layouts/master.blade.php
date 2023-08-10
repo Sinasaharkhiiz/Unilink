@@ -20,21 +20,36 @@
         @yield('title')
     </title>
     <body>
+      <style>
+        body {
+    
+           background-image: url("pic1.jpg");
+          }
+      </style>
         <nav class="navbar fixed-top bg-primary navbar-expand-lg bg-body-tertiary" style="margin-bottom: 40px" data-bs-theme="dark" >
             <div class="container-fluid">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="width: 100px">
                   <li class="nav-item">
-                    <a class="navbar-brand active" aria-current="page" href="home">Unilnk</a>
+                    <a class="navbar-brand active" aria-current="page" href="home"><img src="logo.png" alt="unilink" style="width: 100px;"></a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      منابع آموزشی                 </a>
+                    <ul class="dropdown-menu" >
+                      <li><a class="dropdown-item" href="courses">جزوات آموزشی</a></li>
+                      <li><a class="dropdown-item" href="#">دوره های آموزشی</a></li>
+                    </ul>
                   </li>
                 </ul>
-                <form class="d-flex" role="search" method="GET" style="margin-left: auto;" >
+                <!--
+                <form class="d-flex" role="search" method="GET" style="margin-left: auto; " >
                   <input class="form-control me-2" type="search" name="search" placeholder="دنبال چی میگردی؟"   value="{{ request('search') }}" aria-label="Search" style="width: 276px">
                   <button class="btn btn-outline-info" type="submit">جستجو</button>
-                </form>
+                </form>-->
                 @if (Auth::check())
                 <ul class="navbar-nav  dropstart" >
                   

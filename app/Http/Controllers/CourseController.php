@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Course;
+use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
@@ -96,6 +98,7 @@ class CourseController extends Controller
     {
         $c_data = Course::find($_GET['id']);
         $p_data = User::find($c_data->publisher_id);
-        return view('course.course', ['c_data'=> $c_data,'p_data'=>$p_data]);
+        $co_data = DB::table('comments')->join('users', 'comments.sender_id', '=', 'users.id')->select('*')->paginate(3);
+        return view('course.course', ['c_data'=> $c_data,'p_data'=>$p_data , 'co_data'=>$co_data]);
     }
 }

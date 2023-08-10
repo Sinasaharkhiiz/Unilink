@@ -14,11 +14,19 @@
     <div class="vl"></div>
     <h2 class="text-light">جزوات آموزشی</h2>
   </div>
+  
+  <div style="width:100%" class=" d-flex  justify-content-center align-items-center" data-bs-theme="dark">
+    <form class="d-flex" role="search" method="GET" style="margin-left: auto; margin-right:auto " >
+      <input class="form-control me-2 " type="search" name="search" placeholder="دنبال چی میگردی؟"   value="{{ request('search') }}" aria-label="Search" style="width: 276px">
+      <button class="btn btn-light" type="submit">جستجو</button>
+    </form>
+  </div>
+  <br>
   <div class="album py-3" style="background-color: rgba(22, 24, 22, 0.5);">
     <div class="container" >
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         @if($c_data->total() != 0)
-        @foreach ($c_data as $ket => $value)
+        @foreach ($c_data as $key => $value)
         <div class="col">
           <div class="card shadow-sm bg-dark">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
