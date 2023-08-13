@@ -32,5 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/add_course',[CourseController::class, 'store']);
     Route::post('/course/{id}',[CourseController::class, 'add_comment']);
     Route::get('/course',[CourseController::class, 'show_course']);
-
+    Route::middleware(['roleChecker:super_admin,null,null'])->group(function () {
+        Route::get('/adminpanel',[CreateNewUser::class, 'show_admin_panel']);
+    });
 });

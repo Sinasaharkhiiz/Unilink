@@ -44,4 +44,9 @@ class CreateNewUser implements CreatesNewUsers
     {
         return view('user-profile.profile');
     }
+
+    public function show_admin_panel()
+    {
+        return view('user-profile.adminPanel');
+    }
 }

@@ -37,7 +37,13 @@
                                 <h5 class="mb-0 text-light">قیمت:</h5>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <h6 class="mb-0" style="color: darkgray">{{$c_data->price}} تومان</h6>
+                                <h6 class="mb-0" style="color: darkgray">
+                                @if($c_data->price==0)
+                                    <p><strong class="text-success"> رایگان </strong></p>
+                                @else
+                                    <p><strong>{{"قیمت :".$c_data->price." "."تومان"}}</strong></p> 
+                                @endif    
+                                </h6>
                             </div>
                         </div>
                         <div class="row">

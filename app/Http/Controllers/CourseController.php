@@ -46,7 +46,8 @@ class CourseController extends Controller
         $course->date= now()->format('Y-m-d');
         $course->publisher_id = Auth::user()->id;
         $course->save();
-        return redirect('home');
+        alert()->success('جزوه با موفقیت ثبت شد ','با تشکر .');
+        return redirect('courses');
     }
     public function add_comment(Request $req)
     {
@@ -101,7 +102,7 @@ class CourseController extends Controller
         if (request('search')) {
             $c_data = Course::where('name', 'like', '%' . request('search') . '%')->paginate(9);
         } else {
-            $c_data = Course::paginate(9);
+            $c_data = Course::orderBy('created_at', 'DESC')->paginate(9);
         }
         return view('course.courses', ['c_data'=> $c_data]);
     }
@@ -110,7 +111,7 @@ class CourseController extends Controller
     {
         $c_data = Course::find($_GET['id']);
         $p_data = User::find($c_data->publisher_id);
-        $co_data = DB::table('comments')->join('users', 'comments.sender_id', '=', 'users.id')->select('*')->where('course_id', '=' , $_GET['id'])->paginate(3);
+        $co_data = DB::table('comments')->join('users', 'comments.sender_id', '=', 'users.id')->select('*')->where('course_id', '=' , $_GET['id'])->orderBy('comments.created_at', 'DESC')->paginate(3);
         return view('course.course', ['c_data'=> $c_data,'p_data'=>$p_data , 'co_data'=>$co_data]);
     }
 }
