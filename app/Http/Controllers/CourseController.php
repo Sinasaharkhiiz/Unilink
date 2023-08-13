@@ -47,6 +47,16 @@ class CourseController extends Controller
         $course->save();
         return redirect('home');
     }
+    public function add_comment(Request $req)
+    {
+        $comment = new Comment;
+        $comment->sender_id = Auth::user()->id;
+        $comment->course_id = $req->input('c_id');
+        $comment->comment=$req->input('comment');
+        $comment->date= now()->format('Y-m-d');
+        $comment->save();
+        return redirect('course/'.'?id='.$req->input('c_id'));
+    }
 
     /**
      * Display the specified resource.
@@ -98,7 +108,7 @@ class CourseController extends Controller
     {
         $c_data = Course::find($_GET['id']);
         $p_data = User::find($c_data->publisher_id);
-        $co_data = DB::table('comments')->join('users', 'comments.sender_id', '=', 'users.id')->select('*')->paginate(3);
+        $co_data = DB::table('comments')->join('users', 'comments.sender_id', '=', 'users.id')->select('*')->where('course_id', '=' , $_GET['id'])->paginate(3);
         return view('course.course', ['c_data'=> $c_data,'p_data'=>$p_data , 'co_data'=>$co_data]);
     }
 }

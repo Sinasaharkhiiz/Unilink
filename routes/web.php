@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard',[Controller::class, 'show_dashboard']);
     Route::get('/add_course',[CourseController::class, 'show_add_course']);
     Route::post('/add_course',[CourseController::class, 'store']);
+    Route::post('/course/{id}',[CourseController::class, 'add_comment']);
     Route::get('/course',[CourseController::class, 'show_course']);
 
 });

@@ -44,7 +44,39 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9 text-secondary" id="comments">
                                 <input type="button" class="btn btn-outline-info px-4" value="افزودن به سبد خرید">
-                                <input type="button" class="btn btn-outline-light px-4" value="نظر دادن">
+                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">نظر دادن </button>
+                                <form class="needs-validation" novalidate method="post" action="course/{id}" enctype="multipart/form-data">
+                                    @csrf
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">نظر جدید</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <form>
+                                          <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">جزوه:</label>
+                                            <input type="text" class="form-control" id="recipient-name" value="{{$c_data->name}}" readonly>
+                                            <input type="text" name="c_id" class="form-control" id="re-name" value="{{$c_data->id}}" readonly hidden>
+                                            
+                                          </div>
+                                          <div class="mb-3">
+                                            <label for="message-text" class="col-form-label">نظر:</label>
+                                            <textarea class="form-control" name="comment" id="message-text" required></textarea>
+                                          </div>
+                                        </form>
+                                      </div>
+                                      <div class="modal-footer" style="flex-direction: row-reverse">
+                                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">بازگشت</button>
+                                        <button type="submit" class="btn btn-light">ارسال</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -129,7 +161,7 @@
     </div>
     <hr class="text-light" id="comments">
     <div class="col-lg-8">
-        <div style="background-color: rgba(22, 24, 22, 0.5)" >
+        <div style="background-color: rgba(22, 24, 22, 0.5); border-radius: 10px" >
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-sm-3">
@@ -140,8 +172,8 @@
                 <div class="row mb-3">
                     <div class="col-sm-1">
                     </div>
-                    <div class="col-sm-10 text-secondary">
-                        <div class="mb-0" style="background-color: rgba(22, 24, 22, 0.9)">
+                    <div class="col-sm-10 text-secondary" style="padding-bottom: 20px">
+                        <div class="mb-0" style="background-color: rgba(22, 24, 22, 0.9); border-radius: 10px">
                             <div style="margin-right: 10px">{{$value->name}}</div>
                             <br>
                             <h5 class="text-light" style="margin-right: 20px">{{$value->comment}}</h5>
