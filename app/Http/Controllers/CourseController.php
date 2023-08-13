@@ -8,6 +8,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CourseController extends Controller
 {
@@ -55,6 +56,7 @@ class CourseController extends Controller
         $comment->comment=$req->input('comment');
         $comment->date= now()->format('Y-m-d');
         $comment->save();
+        toast('نظر شما با موفقیت ثبت شد','success')->position('top');;
         return redirect('course/'.'?id='.$req->input('c_id'));
     }
 

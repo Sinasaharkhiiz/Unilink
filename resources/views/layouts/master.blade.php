@@ -25,6 +25,16 @@
     
            background-image: url("pic1.jpg");
           }
+           @font-face {
+    font-family: "Yekan";
+    src: url(includes/fonts/Yekan.eot);
+    src: url(includes/fonts/Yekan.eot?#iefix) format("embedded-opentype"),
+         url(includes/fonts/Yekan.woff) format("woff"),
+         url(includes/fonts/Yekan.ttf) format("truetype"),
+         url(includes/fonts/Yekan.svg#BYekan) format("svg");
+    font-weight: normal;
+    font-style: normal
+}
       </style>
         <nav class="navbar fixed-top bg-primary navbar-expand-lg bg-body-tertiary" style="margin-bottom: 40px" data-bs-theme="dark" >
             <div class="container-fluid">
@@ -87,6 +97,7 @@
  @yield('content')
 </div>
  <script src="{{ asset('js/bootstrap.bundle.js') }}" defer></script>
+ @include('sweetalert::alert')
 </body>
 <div class="container" style="margin-top: 50px">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
