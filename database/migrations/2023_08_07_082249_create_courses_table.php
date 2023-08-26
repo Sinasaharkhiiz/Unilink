@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('cover')->default("-");
             $table->unsignedBigInteger('publisher_id');
-            $table->foreign('publisher_id')->references('id')->on('users');
+            $table->foreign('publisher_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

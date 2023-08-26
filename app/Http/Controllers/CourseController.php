@@ -57,7 +57,7 @@ class CourseController extends Controller
         $comment->comment=$req->input('comment');
         $comment->date= now()->format('Y-m-d');
         $comment->save();
-        toast('نظر شما با موفقیت ثبت شد','success')->position('top');;
+        toast('نظر شما با موفقیت ثبت شد','success')->position('top');
         return redirect('course/'.'?id='.$req->input('c_id'));
     }
 
@@ -113,5 +113,12 @@ class CourseController extends Controller
         $p_data = User::find($c_data->publisher_id);
         $co_data = DB::table('comments')->join('users', 'comments.sender_id', '=', 'users.id')->select('*')->where('course_id', '=' , $_GET['id'])->orderBy('comments.created_at', 'DESC')->paginate(3);
         return view('course.course', ['c_data'=> $c_data,'p_data'=>$p_data , 'co_data'=>$co_data]);
+    }
+
+    public function show_courses_management()
+    {
+        $all_courses = Course::all();
+        return view('course.courses_management', ['all_courses'=> $all_courses]);
+
     }
 }
