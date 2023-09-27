@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Symfony\Component\Console\Input\Input;
 
 class CourseController extends Controller
 {
@@ -111,14 +112,32 @@ class CourseController extends Controller
     {
         $c_data = Course::find($_GET['id']);
         $p_data = User::find($c_data->publisher_id);
-        $co_data = DB::table('comments')->join('users', 'comments.sender_id', '=', 'users.id')->select('*')->where('course_id', '=' , $_GET['id'])->orderBy('comments.created_at', 'DESC')->paginate(3);
+        $co_data = DB::table('comments')->join('users', 'comments.sender_id', '=', 'users.id')->select('*','comments.id as com_id')->where('course_id', '=' , $_GET['id'])->orderBy('comments.created_at', 'DESC')->paginate(3);
         return view('course.course', ['c_data'=> $c_data,'p_data'=>$p_data , 'co_data'=>$co_data]);
     }
 
     public function show_courses_management()
     {
-        $all_courses = Course::all();
+        
+
+        if (request('search')) {
+            $all_courses = Course::where('name', 'like', '%' . request('search') . '%')->orWhere('id', 'like', '%' . request('search') . '%')->paginate(9);
+        } else {
+            $all_courses = Course::paginate(9);
+        }
         return view('course.courses_management', ['all_courses'=> $all_courses]);
 
+    }
+    public function delete_comment(Request $req)
+    {
+        Comment::where('id',$req->input('com_id'))->delete();
+        toast('نظر با موفقیت حذف شد','success')->position('top');
+        return redirect('course?id='.$req->Input('cou_id').'#comments');
+    }
+    public function delete_course(Request $req)
+    {
+        Course::where('id',$req->input('course_id'))->delete();
+        toast('جزوه با موفقیت حذف شد','success')->position('top');
+        return redirect('courses_management');
     }
 }

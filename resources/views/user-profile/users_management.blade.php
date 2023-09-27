@@ -67,12 +67,12 @@
 
         <td>
           <!-- Button trigger modal (Delete User)-->
-        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-danger btn-sm deleteUser" value="{{$value->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal">
            حذف
         </button>
 
 <!-- Modal (Delete User)-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -80,21 +80,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      {{"آیا مطمئن هستید که می خواهید  ". $value->name ." ". "را حذف کنید؟ "}}
+      {{"آیا مطمئن هستید که می خواهید کاربر مورد نظر را حذف کنید؟"}}
       </div>
       <div class="modal-footer" style="flex-direction: row-reverse">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
         <form class="needs-validation" novalidate method="post" action="delete_user/{id}" enctype="multipart/form-data">
           @csrf
-          <input type="text" name="user_id" class="form-control" id="re-name" value="{{4}}" readonly hidden>
+          <input type="text" name="user_id" class="form-control" id="user_id" readonly hidden>
         <button type="submit" class="btn btn-danger">بله</button>
       </form>
       </div>
     </div>
   </div>
 </div>
+<!-- ----------------------- -->
         <div class="vl" style="display: inline-flex"></div>
-        <a class="btn btn-light btn-sm" href="#" role="button">ویرایش</a>
+        <a class="btn btn-light btn-sm" href="edit_user?id={{$value->id}}" role="button">ویرایش</a>
         </td>
       </tr>
       @php
@@ -107,11 +108,25 @@
         <div style="width:100%; height:300px" class=" d-flex  justify-content-center align-items-center">
           <h2 class="text-light" style="margin-left: 25px">404</h2>
           <div class="vla" ></div>
-          <h2 class="text-light">کاربری با شناسه کاربری وراد شده یافت نشد.</h2>
+          <h2 class="text-light">کاربری مطابق با اطلاعات وارد شده پیدا نشد .</h2>
         </div>
   @endif
       </div>
     </div>
 </div>
 
+@endsection
+@section('scripts')
+    <script>
+      $(document).ready(function(){
+        $('.deleteUser').click(function(e){
+
+        e.preventDefault();
+
+        var user_id = $(this).val();
+        $('#user_id').val(user_id);
+        $('#deleteModal').modal('show');
+      });
+    });
+    </script>
 @endsection

@@ -32,10 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/add_course',[CourseController::class, 'store']);
     Route::post('/course/{id}',[CourseController::class, 'add_comment']);
     Route::get('/course',[CourseController::class, 'show_course']);
+    Route::post('/delete_comment/{id}',[CourseController::class, 'delete_comment']);
     Route::middleware(['roleChecker:super_admin,null,null'])->group(function () {
+        Route::get('/edit_user',[CreateNewUser::class, 'edit_user']);
         Route::get('/adminpanel',[CreateNewUser::class, 'show_admin_panel']);
         Route::get('/users_management',[CreateNewUser::class, 'show_users_management']);
         Route::post('/delete_user/{id}',[CreateNewUser::class, 'delete_user']);
+        Route::post('/delete_course/{id}',[CourseController::class, 'delete_course']);
         Route::get('/courses_management',[CourseController::class, 'show_courses_management']);
     });
 });

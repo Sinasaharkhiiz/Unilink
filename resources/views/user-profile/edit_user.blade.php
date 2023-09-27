@@ -1,27 +1,27 @@
 @extends('layouts.master')
 
 @section('title')
-    مشخصات کاربری
+    ویرایش کاربر
 @endsection
     
- 
+
 @section('content')
-<!--
-<div class="container" style="margin-top: 50px">
+
+<div class="container" style="margin-top: 100px" data-bs-theme="dark">
     <div class="main-body">
         <div class="row">
             <div class="col-lg-4">
                 <div class="card bg-dark">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{Auth::user()->avatar}}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                            <img src="{{$u_data->avatar}}" alt="Admin" class="rounded-circle p-1 bg-light" width="110">
                             <div class="mt-3">
-                                <h4 class="text-light mb-1">{{Auth::user()->name}}</h4>
+                                <h4 class="text-light mb-1">{{$u_data->name}}</h4>
                                 <hr>
                                 <p class="text-secondary mb-1">Full Stack Developer</p>
                                 <p class="text-secondary font-size-sm">Bay Area, San Francisco, CA</p>
-                                <button class="btn btn-primary">Follow</button>
-                                <button class="btn btn-outline-primary">Message</button> 
+                                <button class="btn btn-light">Follow</button>
+                                <button class="btn btn-outline-light">Message</button> 
                             </div>
                         </div>
                         <hr class="my-4">
@@ -55,48 +55,47 @@
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Full Name</h6>
+                                <h6 class="mb-0">نام و نام خانوادگی:</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="John Doe">
+                                <input type="text" class="form-control" value="{{$u_data->name}}" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Email</h6>
+                                <h6 class="mb-0">ایمیل:</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="john@example.com">
+                                <input type="text" class="form-control" value="{{$u_data->email}}" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Phone</h6>
+                                <h6 class="mb-0">شماره همراه:</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="(239) 816-9029">
+                                <input type="text" class="form-control" value="+989254863215" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Mobile</h6>
+                                <h6 class="mb-0">نقش:</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="(320) 380-4539">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="Bay Area, San Francisco, CA">
+                                
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected value="{{$u_data->role}}">{{$u_data->role}}</option>
+                                    @if($u_data->role!='student')<option value="1">student</option>@endif
+                                    @if($u_data->role!='teacher')<option value="2">teacher</option>@endif
+                                    @if($u_data->role!='admin')<option value="3">admin</option>@endif
+                                    @if($u_data->role!='super_admin')<option value="4">super_admin</option>@endif
+                                </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="button" class="btn btn-primary px-4" value="Save Changes">
+                                <input type="button" class="btn btn-outline-light px-4" value="اعمال تغییرات">
                             </div>
                         </div>
                     </div>
@@ -134,87 +133,5 @@
         </div>
     </div>
 </div>
--->
-<!-- https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp -->
-<section class="h-100 gradient-custom-2">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col col-lg-9 col-xl-15">
-          <div class="card">
-            <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
-              <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                <img src="{{Auth::user()->avatar}}"
-                  alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                  style="width: 150px; z-index: 1">
-                <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                  style="z-index: 1;">
-                  Edit profile
-                </button>
-              </div>
-              <div class="ms-3" style="margin-top: 130px;">
-                <h4>{{Auth::user()->name}} <svg class="text-primary" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
-                    <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-                  </svg></h4>
-                <p class="text-secondary">{{Auth::user()->role}}</p>
-              </div>
-            </div>
-            <div class="p-4 text-black" style="background-color: #f8f9fa;">
-              <div class="d-flex justify-content-end text-center py-1">
-                <div>
-                  <p class="mb-1 h5">253</p>
-                  <p class="small text-muted mb-0">Photos</p>
-                </div>
-                <div class="px-3">
-                  <p class="mb-1 h5">1026</p>
-                  <p class="small text-muted mb-0">Followers</p>
-                </div>
-                <div>
-                  <p class="mb-1 h5">478</p>
-                  <p class="small text-muted mb-0">Following</p>
-                </div>
-              </div>
-            </div>
-            <div class="card-body p-4 text-black">
-              <div class="mb-5">
-                <p class="lead fw-normal mb-1">About</p>
-                <div class="p-4" style="background-color: #f8f9fa;">
-                  <p class="font-italic mb-1">Web Developer</p>
-                  <p class="font-italic mb-1">Lives in New York</p>
-                  <p class="font-italic mb-0">Photographer</p>
-                </div>
-              </div>
-              <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="lead fw-normal mb-0">Recent photos</p>
-                <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
-              </div>
-              <div class="row g-2">
-                <div class="col mb-2">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                    alt="image 1" class="w-100 rounded-3">
-                </div>
-                <div class="col mb-2">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                    alt="image 1" class="w-100 rounded-3">
-                </div>
-              </div>
-              <div class="row g-2">
-                <div class="col">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                    alt="image 1" class="w-100 rounded-3">
-                </div>
-                <div class="col">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                    alt="image 1" class="w-100 rounded-3">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
 
 @endsection

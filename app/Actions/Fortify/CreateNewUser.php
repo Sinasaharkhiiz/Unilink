@@ -70,4 +70,10 @@ class CreateNewUser implements CreatesNewUsers
         toast('کاربر با موفقیت حذف شد','success')->position('top');
         return redirect('users_management');
     }
+    public function edit_user()
+    {
+        $u_data = User::find($_GET['id']);
+        
+        return view('user-profile.edit_user', ['u_data'=> $u_data]);
+    }
 }
