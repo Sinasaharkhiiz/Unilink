@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
+<<<<<<< HEAD
         "laracasts/flash": "^3.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
@@ -16,6 +17,12 @@
         "mckenziearts/laravel-notify": "^2.4",
         "morilog/jalali": "^3.4",
         "munafio/chatify": "^1.6",
+=======
+        "laravel/fortify": "^1.17",
+        "laravel/framework": "^10.10",
+        "laravel/sanctum": "^3.2",
+        "laravel/tinker": "^2.8",
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
         "realrashid/sweet-alert": "^7.1"
     },
     "require-dev": {

@@ -198,6 +198,7 @@ return [
 
     'same_site' => 'lax',
 
+<<<<<<< HEAD
     /*
     |--------------------------------------------------------------------------
     | Partitioned Cookies
@@ -211,4 +212,6 @@ return [
 
     'partitioned' => false,
 
+=======
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 ];

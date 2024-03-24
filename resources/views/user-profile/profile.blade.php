@@ -3,8 +3,13 @@
 @section('title')
     مشخصات کاربری
 @endsection
+<<<<<<< HEAD
 
 
+=======
+    
+ 
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 @section('content')
 <!--
 <div class="container" style="margin-top: 50px">
@@ -21,7 +26,11 @@
                                 <p class="text-secondary mb-1">Full Stack Developer</p>
                                 <p class="text-secondary font-size-sm">Bay Area, San Francisco, CA</p>
                                 <button class="btn btn-primary">Follow</button>
+<<<<<<< HEAD
                                 <button class="btn btn-outline-primary">Message</button>
+=======
+                                <button class="btn btn-outline-primary">Message</button> 
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                             </div>
                         </div>
                         <hr class="my-4">
@@ -152,6 +161,7 @@
                 </button>
               </div>
               <div class="ms-3" style="margin-top: 130px;">
+<<<<<<< HEAD
                 <h4>@if (Auth::user()->role=="super_admin")
                     <svg class="text-primary" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
                     <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
@@ -160,6 +170,11 @@
                     {{Auth::user()->name}}
 
                     </h4>
+=======
+                <h4>{{Auth::user()->name}} <svg class="text-primary" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+                    <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                  </svg></h4>
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                 <p class="text-secondary">{{Auth::user()->role}}</p>
               </div>
             </div>
@@ -222,4 +237,8 @@
 
 
 
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992

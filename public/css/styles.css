@@ -10,11 +10,19 @@
 }
 
 * {
+<<<<<<< HEAD
 
     font-family: Yekan, Tahoma !important;
 }
 body {
 
+=======
+    
+    font-family: Yekan, Tahoma !important;
+}
+body {
+    
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
     background-image: url("http://127.0.0.1:8000/pic1.jpg");
 }
 html {
@@ -22,10 +30,13 @@ html {
     min-height: 100%;
 }
 
+<<<<<<< HEAD
 .sweet-alert {
     background-color: #2f2f2f96;
 
     }
+=======
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 
 
 .footer {

@@ -3,8 +3,13 @@
 @section('title')
     صفحه کاربری ادمین
 @endsection
+<<<<<<< HEAD
 
 
+=======
+    
+ 
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 @section('content')
 <style>
   .vl {
@@ -62,12 +67,16 @@
         <td>{{$value->name}}</td>
         <td>{{$value->username}}</td>
         <!--<td>{{--$value->email--}}</td>-->
+<<<<<<< HEAD
         @if ($value->role=="super_admin")
         <td>مدیر</td>
         @elseif ($value->role=="student")
         <td>دانش آموز</td>
         @endif
 
+=======
+        <td>{{$value->role}}</td>
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
         <td>{{$value->id}}</td>
 
         <td>
@@ -134,4 +143,8 @@
       });
     });
     </script>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992

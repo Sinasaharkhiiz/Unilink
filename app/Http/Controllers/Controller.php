@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 
 
 use App\Models\User;
@@ -70,4 +71,28 @@ class Controller extends BaseController
 
        return view('user-profile.edit_user', ['u_data'=> $u_data]);
    }
+=======
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+
+class Controller extends BaseController
+{
+    use AuthorizesRequests, ValidatesRequests;
+    public function show_dashboard()
+    {
+        return view('dashboard');
+    }
+
+    public function show_home()
+    {
+        return view('home');
+    }
+    public function show_logout()
+    {
+        auth()->logout();
+        Session()->flush();
+        return view('home');
+    }
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 }

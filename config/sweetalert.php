@@ -11,7 +11,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'theme' => env('SWEET_ALERT_THEME', 'dark'),
+=======
+    'theme' => env('SWEET_ALERT_THEME', 'default'),
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 
     /*
     |--------------------------------------------------------------------------
@@ -118,7 +122,11 @@ return [
     |  The default background is '#fff'.
     */
 
+<<<<<<< HEAD
     'background' => env('SWEET_ALERT_BACKGROUND', '#1F1F1F'),
+=======
+    'background' => env('SWEET_ALERT_BACKGROUND', '#fff'),
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 
     /*
     |--------------------------------------------------------------------------

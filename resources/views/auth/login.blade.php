@@ -17,12 +17,21 @@
             <div class="card-body p-6 text-center">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
+<<<<<<< HEAD
 
                 <div class="mb-md-3 mt-md-3 pb-1" >
 
                 <h2 class="fw-bold mb-3 text-uppercase">ورود به سیستم</h2>
 
 
+=======
+  
+                <div class="mb-md-3 mt-md-3 pb-1" >
+  
+                <h2 class="fw-bold mb-3 text-uppercase">ورود به سیستم</h2>
+               
+  
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                 <div class="form-outline form-white mb-4">
                   <input type="email" name="email" id="typeEmailX" style="text-align: center" class="form-control form-control-lg @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus />
                     @error('email')
@@ -32,8 +41,13 @@
                     @enderror
                   <label class="form-label" for="typeEmailX">ایمیل</label>
                 </div>
+<<<<<<< HEAD
 
 
+=======
+                
+  
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                 <div class="form-outline form-white mb-2">
                   <input type="password" name="password" id="typePasswordX" style="text-align: center" class="form-control form-control-lg @error('password') is-invalid @enderror" required autocomplete="current-password" />
                     @error('password')
@@ -43,10 +57,17 @@
                     @enderror
                   <label class="form-label" for="typePasswordX">رمز عبور</label>
                 </div>
+<<<<<<< HEAD
 
 
                 <p class="small mb-2 pb-lg-2"><a class="text-white-50" href="#!">فراموش کرده اید؟</a></p>
 
+=======
+                
+  
+                <p class="small mb-2 pb-lg-2"><a class="text-white-50" href="#!">فراموش کرده اید؟</a></p>
+  
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">ورود</button>
 
               </div>
@@ -54,7 +75,11 @@
                 <p class="mb-0">هنوز عضو نشده اید؟ <a href="register" class="text-white-50 fw-bold">ثبت نام </a>
                 </p>
               </div>
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
             </div>
           </div>
         </div>
