@@ -40,11 +40,7 @@ unilink
                 <div class="carousel-caption text-start">
                   <h1>پیام رسان Uni Messenger</h1>
                   <p class="opacity-75">به راحتی با سایر دانشجویان و اساتید ارتباط برقرار کن و تجربیاتت رو به اشتراک بذار</p>
-<<<<<<< HEAD
                   <p><a class="btn btn-outline-light" href="chatify">Uni Messenger</a></p>
-=======
-                  <p><a class="btn btn-outline-light" href="#">Uni Messenger</a></p>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                 </div>
               </div>
           </div>
@@ -59,8 +55,4 @@ unilink
         </button>
       </div>
 
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992

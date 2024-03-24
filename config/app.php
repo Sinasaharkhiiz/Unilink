@@ -70,11 +70,7 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'timezone' => 'Asia/Tehran',
-=======
-    'timezone' => 'UTC',
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 
     /*
     |--------------------------------------------------------------------------
@@ -145,11 +141,7 @@ return [
 
     'maintenance' => [
         'driver' => 'file',
-<<<<<<< HEAD
         // 'store' => 'redis',
-=======
-        // 'store'  => 'redis',
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
     ],
 
     /*
@@ -171,7 +163,6 @@ return [
         /*
          * Application Service Providers...
          */
-<<<<<<< HEAD
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         App\Providers\AppServiceProvider::class,
@@ -180,15 +171,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-=======
-        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-        App\Providers\FortifyServiceProvider::class,
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
     ])->toArray(),
 
     /*
@@ -204,14 +186,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-<<<<<<< HEAD
         'Chatify' => Chatify\Facades\ChatifyMessenger::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-=======
-        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-        'Auth' => Illuminate\Support\Facades\Auth::class,
-        'input' => Illuminate\Support\Facades\Input::class,
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
     ])->toArray(),
 
 ];

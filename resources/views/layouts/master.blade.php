@@ -6,19 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#212529" />
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<<<<<<< HEAD
 
         <link rel="icon" type="image/x-icon" href="pic2.png">
         <!-- Bootstrap -->
         <link href="{{ asset('/css/bootstrap.rtl.css') }}" rel="stylesheet">
 
-=======
-       
-        <link rel="icon" type="image/x-icon" href="pic2.png">
-        <!-- Bootstrap -->
-        <link href="{{ asset('/css/bootstrap.rtl.css') }}" rel="stylesheet">
-        
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
         <!-- Additional CSS -->
         <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
 
@@ -31,14 +23,8 @@
     <body>
       <style>
         body {
-<<<<<<< HEAD
         background-image: url("pic1.jpg");
              }
-=======
-    
-           background-image: url("pic1.jpg");
-          }
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
            @font-face {
     font-family: "Yekan";
     src: url(includes/fonts/Yekan.eot);
@@ -50,28 +36,18 @@
     font-style: normal
 }
       </style>
-<<<<<<< HEAD
         <nav class="navbar fixed-top bg-primary navbar-expand-lg bg-body-tertiary" style="margin-bottom: 40px; opacity: .90 !important;" data-bs-theme="dark" >
-=======
-        <nav class="navbar fixed-top bg-primary navbar-expand-lg bg-body-tertiary" style="margin-bottom: 40px" data-bs-theme="dark" >
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
             <div class="container-fluid">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="width: 100px">
-<<<<<<< HEAD
                   <br>
                   <li class="nav-item">
                     <a class="navbar-brand active" aria-current="page" href="home"><img src="logo.png" alt="unilink" style="width: 100px;"></a>
                   </li>
 
-=======
-                  <li class="nav-item">
-                    <a class="navbar-brand active" aria-current="page" href="home"><img src="logo.png" alt="unilink" style="width: 100px;"></a>
-                  </li>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       منابع آموزشی                 </a>
@@ -88,24 +64,13 @@
                 </form>-->
                 @if (Auth::check())
                 <ul class="navbar-nav  dropstart" >
-<<<<<<< HEAD
 
 
-=======
-                  
-                  <li class="nav-item ">
-                    <a class="nav-link  " href="#" role="button" data-bs-toggle="modal" data-bs-target="#shopModal" >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                      </svg>    </a>
-                  </li>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " aria-labelledby="dropdownMenu2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       {{Auth::user()->name}}  </a>
                     <ul class="dropdown-menu" >
-<<<<<<< HEAD
                       <li><a class="dropdown-item" href="profile"> <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                         <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
                       </svg> پنل کاربری </a></li>
@@ -134,18 +99,6 @@
                         <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                         <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
                       </svg> خروج</a></li>
-=======
-                      <li><a class="dropdown-item" href="profile">پنل کاربری</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      @if (Auth::user()->role=='super_admin')
-                      <li><a class="dropdown-item" href="adminpanel">پنل ادمین</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      @endif
-                      <li><a class="dropdown-item" href="logout"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
-                        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-                      </svg>خروج از حساب کاربری</a></li>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                     </ul>
                   </li>
                   </ul>
@@ -161,11 +114,7 @@
                 </li>
                 </ul>
                 @endif
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
               </div>
             </div>
           </nav>
@@ -188,11 +137,7 @@
             </div>
           </div>
           <!--     --------      -->
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 <div style="margin-top: 55px;">
  @yield('content')
 </div>
@@ -219,9 +164,5 @@
     </ul>
   </footer>
 </div>
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 

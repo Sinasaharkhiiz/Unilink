@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 <?php use App\Models\User; ?>
-=======
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 @extends('layouts.master')
 
 @section('title')
     صفحه کاربری ادمین
 @endsection
-<<<<<<< HEAD
 
 
-=======
-    
- 
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 @section('content')
 <style>
   .vl {
@@ -69,12 +61,8 @@
         <td>{{$value->name}}</td>
         <td>{{$value->price}}</td>
         <!--<td>{{--$value->email--}}</td>-->
-<<<<<<< HEAD
          <?php $user=User::find($value->publisher_id) ?>
         <td>{{$user->name}}</td>
-=======
-        <td>{{$value->publisher_id}}</td>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
         <td>{{$value->id}}</td>
         <td>
           <!-- Button trigger modal (Delete course)-->
@@ -141,8 +129,4 @@
       });
     });
     </script>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992

@@ -4785,11 +4785,7 @@ textarea.form-control-lg {
   z-index: 3;
   color: var(--bs-pagination-active-color);
   background-color: var(--bs-pagination-active-bg);
-<<<<<<< HEAD
 
-=======
-  border-color: var(--bs-pagination-active-border-color);
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 }
 .page-link.disabled, .disabled > .page-link {
   color: var(--bs-pagination-disabled-color);
@@ -12028,8 +12024,4 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-<<<<<<< HEAD
 /*# sourceMappingURL=bootstrap.rtl.css.map */
-=======
-/*# sourceMappingURL=bootstrap.rtl.css.map */
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992

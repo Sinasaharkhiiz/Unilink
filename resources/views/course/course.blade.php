@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 <?php use App\Models\User; ?>
-=======
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 @extends('layouts.master')
 
 @section('title')
@@ -45,27 +42,18 @@
                                 @if($c_data->price==0)
                                     <p><strong class="text-success"> رایگان </strong></p>
                                 @else
-<<<<<<< HEAD
                                     <p><strong>{{"قیمت :".$c_data->price." "."تومان"}}</strong></p>
                                 @endif
-=======
-                                    <p><strong>{{"قیمت :".$c_data->price." "."تومان"}}</strong></p> 
-                                @endif    
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                                 </h6>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9 text-secondary" id="comments">
-<<<<<<< HEAD
                                 @if ($Check_student)
                                 <a href={{"storage/".$c_data->content}}>
                                 <button type="button" class="btn btn-success" >بارگیری جزوه</button>
                                 </a>
-=======
-                                <input type="button" class="btn btn-outline-info px-4" value="افزودن به سبد خرید">
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                                 <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">نظر دادن </button>
                                 <form class="needs-validation" novalidate method="post" action="course/{id}" enctype="multipart/form-data">
                                     @csrf
@@ -82,11 +70,7 @@
                                             <label for="recipient-name" class="col-form-label">جزوه:</label>
                                             <input type="text" class="form-control" id="recipient-name" value="{{$c_data->name}}" readonly>
                                             <input type="text" name="c_id" class="form-control" id="re-name" value="{{$c_data->id}}" readonly hidden>
-<<<<<<< HEAD
 
-=======
-                                            
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                                           </div>
                                           <div class="mb-3">
                                             <label for="message-text" class="col-form-label">امتیاز:</label>
@@ -95,20 +79,12 @@
                                                 <label class="btn btn-outline-light" style=" width: 66px; " for="btnradio5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="margin-bottom: 5px;">
                                                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                                                   </svg> 5 </label>
-<<<<<<< HEAD
 
-=======
-                                              
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
                                                 <label class="btn btn-outline-light" style=" width: 66px; " for="btnradio4"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="margin-bottom: 5px;">
                                                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                                                   </svg> 4 </label>
-<<<<<<< HEAD
 
-=======
-                                              
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
                                                 <label class="btn btn-outline-light" style=" width: 66px; " for="btnradio3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-half" viewBox="0 0 16 16"  style="margin-bottom: 5px;">
                                                     <path d="M5.354 5.119 7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.548.548 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.52.52 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.58.58 0 0 1 .085-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.565.565 0 0 1 .162-.505l2.907-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.001 2.223 8 2.226v9.8z"/>
@@ -124,11 +100,7 @@
                                                     <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
                                                   </svg> 1 </label>
                                               </div>
-<<<<<<< HEAD
 
-=======
-                                            
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                                           </div>
                                           <div class="mb-3">
                                             <label for="message-text" class="col-form-label">نظر:</label>
@@ -145,7 +117,6 @@
                                 </div>
                                 </form>
 
-<<<<<<< HEAD
                                 @else
                                 <form class="needs-validation" style="display: inline" novalidate method="post" action="buy_course" enctype="multipart/form-data">
                                     @csrf
@@ -157,17 +128,11 @@
 
 
 
-=======
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                             </div>
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                 <!--<div class="row">
                     <div class="col-sm-12">
                         <div class="card">
@@ -206,11 +171,7 @@
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="{{$p_data->avatar}}" alt="Admin" class="rounded-circle p-1 bg-light" width="110">
                             <div class="mt-3">
-<<<<<<< HEAD
                                 <h4 class="text-light">{{$p_data->name}}</h4>
-=======
-                                <h4 class="text-light mb-1">{{$p_data->name}}</h4>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                                 <p class="text-secondary mb-1">منتشر کننده</p>
                                 <!--
                                 <hr>
@@ -251,11 +212,7 @@
     </div>
     <hr class="text-light" id="comments">
     <div class="col-lg-8">
-<<<<<<< HEAD
         <div style="background-color: rgba(22, 24, 22, 0.6); border-radius: 10px" >
-=======
-        <div style="background-color: rgba(22, 24, 22, 0.5); border-radius: 10px" >
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-sm-3">
@@ -269,12 +226,8 @@
                     </div>
                     <div class="col-sm-10 text-secondary" style="padding-bottom: 20px">
                         <div class="mb-0" style="background-color: rgba(22, 24, 22, 0.9); border-radius: 10px">
-<<<<<<< HEAD
                             <?php $sender = User::find($value->sender_id)?>
                             <div style="margin-right: 10px">{{$sender->name}}</div>
-=======
-                            <div style="margin-right: 10px">{{$value->name}}</div>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                             <br>
                             <h5 class="text-light" style="margin-right: 20px">{{$value->comment}}</h5>
                             @if (Auth::user()->id == $value->sender_id)
@@ -282,11 +235,7 @@
                             <div style="margin-right: 20px">
                                 <form class="needs-validation" id="delete_comment" novalidate method="post" action="delete_comment/{id}" enctype="multipart/form-data">
                                     @csrf
-<<<<<<< HEAD
                                     <input type="text" name="com_id" class="form-control" id="re-name" value="{{$value->id}}" readonly hidden>
-=======
-                                    <input type="text" name="com_id" class="form-control" id="re-name" value="{{$value->com_id}}" readonly hidden>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                                     <input type="text" name="cou_id" class="form-control" id="re-name" value="{{ request('id')}}" readonly hidden>
                                 <a type="submit" onclick="document.getElementById('delete_comment').submit();"><div class="text-danger" style="display: inline-flex"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16"><title>حذف</title>
                                     <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
@@ -300,11 +249,7 @@
                             </div>
                             @endif
                             <div style="text-align: left; margin-left: 10px">
-<<<<<<< HEAD
                                 {{jdate($value->created_at)->ago()}}
-=======
-                                {{$value->date}}
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                             </div>
                         </div>
                     </div>
@@ -319,7 +264,6 @@
             {{$co_data->appends(['id' => request('id')])->fragment('comments')->links('vendor.pagination.bootstrap-5')}}
         </div>
     </div>
-<<<<<<< HEAD
 
 </div>
 
@@ -328,13 +272,3 @@
 
 
 @endsection
-=======
-    
-</div>
-                
-         
-        
-    
-   
-@endsection
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992

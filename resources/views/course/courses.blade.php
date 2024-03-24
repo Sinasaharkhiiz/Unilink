@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 <?php use App\Models\User; ?>
 @extends('layouts.master')
 @section('title')
 جزوات آموزشی
 @endsection
-=======
-@extends('layouts.master')
-
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 @section('content')
 <style>
   .vl {
@@ -22,11 +17,7 @@
     <div class="vl"></div>
     <h2 class="text-light">جزوات آموزشی</h2>
   </div>
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
   <div style="width:100%" class=" d-flex  justify-content-center align-items-center" data-bs-theme="dark">
     <form class="d-flex" role="search" method="GET" style="margin-left: auto; margin-right:auto " >
       <input class="form-control me-2 " type="search" name="search" placeholder="دنبال چی میگردی؟"   value="{{ request('search') }}" aria-label="Search" style="width: 276px">
@@ -34,7 +25,6 @@
     </form>
   </div>
   <br>
-<<<<<<< HEAD
   <div class="album py-3" style="background-color: rgba(22, 24, 22, 0.88);">
     <div class="container" >
         <div style="width:100%; margin-bottom:15px;" class=" d-flex  justify-content-center align-items-center" data-bs-theme="dark">
@@ -48,26 +38,17 @@
               <input type="hidden" name="search" value="{{ request()->search }}" />
             </form>
             </div>
-=======
-  <div class="album py-3" style="background-color: rgba(22, 24, 22, 0.5);">
-    <div class="container" >
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         @if($c_data->total() != 0)
         @foreach ($c_data as $key => $value)
         <div class="col">
           <div class="card shadow-sm bg-dark">
-<<<<<<< HEAD
            {{-- <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">--}}
                 <img src={{asset("storage/".$value->cover)}} alt="" class="bd-placeholder-img card-img-top" width="100%" height="180">
-=======
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
               <title>{{$value->name}} </title>
               <rect width="100%" height="100%" fill="#55595c"/></svg>
             <div class="card-body">
               <div class="text-center text-light">
-<<<<<<< HEAD
                 <h3>{{$value->name}}</h3>
               </div>
               <p class="text-center" style="color: rgb(139, 138, 138)">{{$value->description}} .</p>
@@ -83,23 +64,10 @@
                   </svg></p>
               </div>
               <hr class="text-light">
-=======
-                <h3>{{$value->name}}</h3>  
-              </div>
-              <p class="text-light">{{$value->description}} .</p>
-              <div class="text-light text-center">
-                 @if($value->price==0)
-                        <p><strong> رایگان </strong></p>
-                  @else
-                        <p><strong>{{"قیمت :".$value->price." "."تومان"}}</strong></p> 
-                  @endif
-              </div>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="course?id={{$value->id}}"><button type="button" class="btn btn-sm btn-outline-light" style="width: 58px">ادامه</button></a>
                 </div>
-<<<<<<< HEAD
                {{--  <p style="color: rgb(102, 105, 103);margin-bottom:2px"><strong><s> 3000000 </s></strong></p>--}}
                 @if($value->price==0)
                         <p style="color: rgb(34, 197, 94);margin-bottom:2px"><strong> رایگان </strong></p>
@@ -107,9 +75,6 @@
                         <p style="color: rgb(34, 197, 94);margin-bottom:2px"><strong>{{$value->price." "."تومان"}}</strong></p>
                   @endif
                 <small style="color: rgb(139, 138, 138)">{{jdate($value->created_at)->format('%B %d، %Y')}}</small>
-=======
-                <small class="text-light">{{$value->date}}</small>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
               </div>
             </div>
           </div>
@@ -123,18 +88,10 @@
         </div>
         @endif
       </div>
-<<<<<<< HEAD
       {{$c_data->appends(['search' => request('search'),'order'=> request('order')])->links('vendor.pagination.bootstrap-5')}}
-=======
-      {{$c_data->appends(['search' => request('search')])->links('vendor.pagination.bootstrap-5')}}
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
     </div>
   </div>
 
 </main>
 
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992

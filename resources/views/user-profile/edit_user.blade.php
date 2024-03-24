@@ -3,11 +3,7 @@
 @section('title')
     ویرایش کاربر
 @endsection
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 
 @section('content')
 
@@ -25,11 +21,7 @@
                                 <p class="text-secondary mb-1">Full Stack Developer</p>
                                 <p class="text-secondary font-size-sm">Bay Area, San Francisco, CA</p>
                                 <button class="btn btn-light">Follow</button>
-<<<<<<< HEAD
                                 <a href="{{asset("chatify/".$u_data->id)}}"><button class="btn btn-outline-light" >Message</button> </a>
-=======
-                                <button class="btn btn-outline-light">Message</button> 
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                             </div>
                         </div>
                         <hr class="my-4">
@@ -90,11 +82,7 @@
                                 <h6 class="mb-0">نقش:</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-<<<<<<< HEAD
 
-=======
-                                
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                                 <select class="form-select" aria-label="Default select example">
                                     <option selected value="{{$u_data->role}}">{{$u_data->role}}</option>
                                     @if($u_data->role!='student')<option value="1">student</option>@endif
@@ -146,8 +134,4 @@
     </div>
 </div>
 
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992

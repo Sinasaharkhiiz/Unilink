@@ -3,13 +3,8 @@
 @section('title')
     ثبت نام
 @endsection
-<<<<<<< HEAD
 
 
-=======
-    
- 
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 @section('content')
 <section class="vh-105 gradient-custom">
     <style>
@@ -27,19 +22,11 @@
             <div class="card-body p-6 text-center">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-<<<<<<< HEAD
 
                 <div class="mb-md-3 mt-md-3 pb-1" >
 
                 <h2 class="fw-bold mb-3 text-uppercase">ثبت نام</h2>
 
-=======
-  
-                <div class="mb-md-3 mt-md-3 pb-1" >
-  
-                <h2 class="fw-bold mb-3 text-uppercase">ثبت نام</h2>
-               
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                 <div class="form-outline form-white mb-4">
                     <input type="text" name="name" id="name" style="text-align: center" class="form-control form-control-lg @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus />
                       @error('name')
@@ -70,13 +57,8 @@
                     @enderror
                   <label class="form-label" for="typeEmailX">ایمیل</label>
                 </div>
-<<<<<<< HEAD
 
 
-=======
-                
-  
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
                 <div class="form-outline form-white mb-2">
                   <input type="password" name="password" id="typePasswordX" style="text-align: center" class="form-control form-control-lg @error('password') is-invalid @enderror" required autocomplete="new-password" />
                     @error('password')
@@ -91,21 +73,12 @@
                     <input type="password" name="password_confirmation" id="password-confirm" style="text-align: center" class="form-control form-control-lg " required autocomplete="new-password" />
                     <label class="form-label" for="password-confirm">تایید رمز عبور</label>
                   </div>
-<<<<<<< HEAD
 
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">ثبت نام</button>
 
               </div>
 
 
-=======
-  
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">ثبت نام</button>
-
-              </div>
-              
-  
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
             </div>
           </div>
         </div>

@@ -3,13 +3,8 @@
 @section('title')
     صفحه کاربری ادمین
 @endsection
-<<<<<<< HEAD
 
 
-=======
-    
- 
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
 @section('content')
 
 
@@ -23,14 +18,10 @@
           </svg>&nbsp;کاربران</div>
           <div class="card-body">
             <h5 class="card-title"> تعداد کاربران &nbsp;: &nbsp;&nbsp;{{$user_count}} </h5>
-<<<<<<< HEAD
             <hr class="text-light">
             <div class="d-grid gap-3 col-5 mx-auto">
                 <a href="users_management"><button type="button" class="btn btn-sm btn-primary" >اطلاعات بیشتر</button></a>
               </div>
-=======
-            <p class="card-text"><a href="users_management">اطلاعات بیشتر</a></p>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
           </div>
         </div>
       </div>
@@ -42,14 +33,10 @@
           </svg>&nbsp;&nbsp;جزوات آموزشی</div>
           <div class="card-body">
             <h5 class="card-title">تعداد جزوات &nbsp;: &nbsp;&nbsp;{{$course_count}}</h5>
-<<<<<<< HEAD
             <hr class="text-light">
             <div class="d-grid gap-3 col-5 mx-auto">
                 <a href="courses_management"><button type="button" class="btn btn-sm btn-primary" >اطلاعات بیشتر</button></a>
               </div>
-=======
-            <p class="card-text"><a href="courses_management">اطلاعات بیشتر</a></p>
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
           </div>
         </div>
       </div>
@@ -72,19 +59,11 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
 
-=======
-   
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
   </div>
 </div>
 
 
 
 
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 0f43e78f49bd242e550afa5f94f8cb0eb1faa992
