@@ -23,7 +23,9 @@
     <body>
       <style>
         body {
-        background-image: url("pic1.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-image: url("pic8.png");
              }
            @font-face {
     font-family: "Yekan";
@@ -154,7 +156,7 @@
       <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
         <img src="pic2.png " style="margin-right:auto margin_left:auto; width: 100px;">
       </a>
-      <span class="mb-3 mb-md-0 text-light">&copy; 2023 Uni link, Inc</span>
+      <span class="mb-3 mb-md-0 text-light">&copy; 2024 Uni link, Inc</span>
     </div>
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">

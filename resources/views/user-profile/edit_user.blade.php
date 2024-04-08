@@ -1,3 +1,4 @@
+<?php use Illuminate\Support\Facades\Auth;?>
 @extends('layouts.master')
 
 @section('title')
@@ -7,6 +8,11 @@
 
 @section('content')
 
+<style>
+    .nav{
+        --bs-nav-link-color: #718096;
+    }
+</style>
 <div class="container" style="margin-top: 100px" data-bs-theme="dark">
     <div class="main-body">
         <div class="row">
@@ -14,17 +20,19 @@
                 <div class="card bg-dark">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{$u_data->avatar}}" alt="Admin" class="rounded-circle p-1 bg-light" width="110">
+                            <img src="{{'storage/'.$u_data->avatar}}" alt="Admin" class="rounded-circle p-1 bg-light" width="110">
                             <div class="mt-3">
                                 <h4 class="text-light mb-1">{{$u_data->name}}</h4>
                                 <hr>
+                                {{--
                                 <p class="text-secondary mb-1">Full Stack Developer</p>
                                 <p class="text-secondary font-size-sm">Bay Area, San Francisco, CA</p>
-                                <button class="btn btn-light">Follow</button>
+                                --}}
                                 <a href="{{asset("chatify/".$u_data->id)}}"><button class="btn btn-outline-light" >Message</button> </a>
                             </div>
                         </div>
                         <hr class="my-4">
+                        {{--
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe me-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
@@ -46,60 +54,262 @@
                                 <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook me-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
                                 <span class="text-secondary">bootdey</span>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>
             <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">نام و نام خانوادگی:</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="{{$u_data->name}}" readonly>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">ایمیل:</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="{{$u_data->email}}" readonly>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">شماره همراه:</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" value="+989254863215" readonly>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">نقش:</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
 
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected value="{{$u_data->role}}">{{$u_data->role}}</option>
-                                    @if($u_data->role!='student')<option value="1">student</option>@endif
-                                    @if($u_data->role!='teacher')<option value="2">teacher</option>@endif
-                                    @if($u_data->role!='admin')<option value="3">admin</option>@endif
-                                    @if($u_data->role!='super_admin')<option value="4">super_admin</option>@endif
-                                </select>
+                <div class="card">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">حساب کاربری</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">مشخصات فردی</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">راه های ارتباطی</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pass-tab" data-bs-toggle="tab" data-bs-target="#pass-tab-pane" type="button" role="tab" aria-controls="pass-tab-pane" aria-selected="false">رمز عبور</button>
+                          </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0"><div class="card-body">
+                            <form class="needs-validation" novalidate method="POST" action="update_user" enctype="multipart/form-data">
+                                @csrf
+                                <input type="text" name="user_id" class="form-control" id="re-name" value="{{$u_data->id}}" readonly hidden>
+                                <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">نام و نام خانوادگی:</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="u_name" class="form-control" value="{{$u_data->name}}" @if(Auth::user()->id!=$u_data->id) readonly @endif>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">ایمیل:</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="email" class="form-control" value="{{$u_data->email}}" readonly>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">شماره همراه:</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" class="form-control" value="+989254863215" @if(Auth::user()->id!=$u_data->id) readonly @endif>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                <label for="avatar" class="form-label">تصویر پروفایل : </label>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                <input accept=".gif,.jpg,.jpeg,.GIF,.png,.PNG,.JPG,.JPEG,.bmp,.BMP" class="form-control" name="avatar" type="file" id="avatar" placeholder=".png">
+                                </div>
+                                <div class="invalid-feedback">
+                                  Valid avatar is required.
+                                </div>
+                              </div>
+                            @if(Auth::user()->role=="super_admin")
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">نقش:</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+
+                                    <select class="form-select" aria-label="Default select example" name="role">
+                                        <option selected value="{{$u_data->role}}">{{$u_data->role}}</option>
+                                        @if($u_data->role!='student')<option value="student">student</option>@endif
+                                        @if($u_data->role!='teacher')<option value="teacher">teacher</option>@endif
+                                        @if($u_data->role!='admin')<option value="admin">admin</option>@endif
+                                        @if($u_data->role!='super_admin')<option value="super_admin">super_admin</option>@endif
+                                    </select>
+                                </div>
+                            </div>
+                            @endif
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="submit" class="btn btn-outline-light px-4" value="اعمال تغییرات">
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="button" class="btn btn-outline-light px-4" value="اعمال تغییرات">
-                            </div>
-                        </div>
+                    </form>
                     </div>
+
+
+
+
+                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                            <div class="card-body">
+                                <form class="needs-validation" novalidate method="POST" action="update_profile" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="user_id" class="form-control" id="re-name" value="{{$u_data->id}}" readonly hidden>
+                                    <div class="row mb-3">
+                                    <div class="col-sm-2">
+                                        <label for="job" class="col-form-label">شغل یا حرفه :</label>
+                                    </div>
+                                    <div class="col-sm-4 text-secondary">
+                                        <input type="text" name="job" class="form-control" placeholder="Full Stack Developer" @if(Auth::user()->id!=$u_data->id) readonly @endif  @if($u_data->profile!=null) value='{{$u_data->profile->job}}' @endif>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label for="state" class="col-form-label">استان :</label>
+                                    </div>
+                                    <div class="col-sm-4 text-secondary">
+                                        <select class="form-select" id="state" required name="state">
+                                            <option selected  @if($u_data->profile!=null)value="{{$u_data->profile->state}}" @endif>@if($u_data->profile!=null) {{$u_data->profile->state}} @endif</option>
+                                            <option value="آذربایجان شرقی">آذربایجان شرقی</option>
+                                            <option value="آذربایجان غربی">آذربایجان غربی</option>
+                                            <option value="اردبیل">اردبیل</option>
+                                            <option value="اصفهان">اصفهان</option>
+                                            <option value="البرز">البرز</option>
+		                                    <option value="ایلام">ایلام</option>
+		                                    <option value="بوشهر">بوشهر</option>
+                                            <option value="تهران">تهران</option>
+		                                    <option value="چهارمحال و بختیاری">چهارمحال و بختیاری</option>
+		                                    <option value="خراسان جنوبی">خراسان جنوبی</option>
+		                                    <option value="خراسان رضوی">خراسان رضوی</option>
+		                                    <option value="خراسان شمالی">خراسان شمالی</option>
+		                                    <option value="خوزستان">خوزستان</option>
+		                                    <option value="زنجان">زنجان</option>
+		                                    <option value="سمنان">سمنان</option>
+		                                    <option value="سیستان و بلوچستان">سیستان و بلوچستان</option>
+		                                    <option value="فارس">فارس</option>
+		                                    <option value="قزوین">قزوین</option>
+		                                    <option value="قم">قم</option>
+		                                    <option value="کردستان">کردستان</option>
+		                                    <option value="کرمان">کرمان</option>
+		                                    <option value="کرمانشاه">کرمانشاه</option>
+		                                    <option value="کهگلویه و بویراحمد">کهگلویه و بویراحمد</option>
+		                                    <option value="گلستان">گلستان</option>
+		                                    <option value="گیلان">گیلان</option>
+		                                    <option value="لرستان">لرستان</option>
+		                                    <option value="مازندران">مازندران</option>
+		                                    <option value="مرکزی">مرکزی</option>
+		                                    <option value="هرمزگان">هرمزگان</option>
+		                                    <option value="همدان">همدان</option>
+		                                    <option value="یزد">یزد</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-2">
+                                        <label for="about" class="form-label">درباره من :</label>
+                                    </div>
+
+                                    <div class="col-sm-10 text-secondary">
+                                        <textarea name="about"  class="form-control" placeholder="توضیحی مختصر در مورد خودتان و حرفه ای که در آن تخصص دارید." id="about" rows="4">@if($u_data->profile!=null) {{$u_data->profile->about}} @endif</textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="submit" class="btn btn-outline-light px-4" value="اعمال تغییرات">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                            </div>
+
+                        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                            <div class="card-body">
+                                <form class="needs-validation" novalidate method="POST" action="update_user_contact" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="user_id" class="form-control" id="re-name" value="{{$u_data->id}}" readonly hidden>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-2">
+                                            <label for="website" class="col-form-label">وبسایت :</label>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <input style="direction: ltr;" type="text" name="website" class="form-control" placeholder="https://unilink.ir/...." @if(Auth::user()->id!=$u_data->id) readonly @endif>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label for="github" class="col-form-label">گیت هاب : </label>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <input style="direction: ltr;" type="text" name="github" class="form-control" placeholder="https://unilink.ir/...." @if(Auth::user()->id!=$u_data->id) readonly @endif>
+                                        </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                        <div class="col-sm-2">
+                                            <label for="linkedin" class="col-form-label">لینکدین :</label>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <input style="direction: ltr;" type="text" name="linkedin" class="form-control" placeholder="https://unilink.ir/...." @if(Auth::user()->id!=$u_data->id) readonly @endif>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label for="telegram" class="col-form-label"> تلگرام :</label>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <input style="direction: ltr;" type="text" name="telegram" class="form-control" placeholder="https://unilink.ir/...." @if(Auth::user()->id!=$u_data->id) readonly @endif>
+                                        </div>
+                                        </div>
+
+                                          <div class="row mb-3">
+                                        <div class="col-sm-2">
+                                            <label for="instagram" class="col-form-label">اینستاگرام :</label>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <input style="direction: ltr;" type="text" name="instagram" class="form-control" placeholder="https://unilink.ir/...." @if(Auth::user()->id!=$u_data->id) readonly @endif>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label for="twitter" class="col-form-label"> توییتر (X) :</label>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <input style="direction: ltr;" type="text" name="twitter" class="form-control" placeholder="https://unilink.ir/...." @if(Auth::user()->id!=$u_data->id) readonly @endif>
+                                        </div>
+                                        </div>
+                                <div class="row">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="submit" class="btn btn-outline-light px-4" value="اعمال تغییرات">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="pass-tab-pane" role="tabpanel" aria-labelledby="pass-tab" tabindex="0">
+                            <div class="card-body">
+                                <form class="needs-validation" novalidate method="POST" action="update_user_password" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="user_id" class="form-control" id="re-name" value="{{$u_data->id}}" readonly hidden>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-2">
+                                            <label for="old_pass" class="col-form-label">رمز عبور فعلی :</label>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <input type="password" name="old_pass" class="form-control">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label for="new_pass" class="col-form-label">رمز عبور جدید :</label>
+                                        </div>
+                                        <div class="col-sm-4 text-secondary">
+                                            <input type="password" name="new_pass" class="form-control">
+                                        </div>
+
+                                        </div>
+
+                                <div class="row">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="submit" class="btn btn-outline-light px-4" value="اعمال تغییرات">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+
+                      </div>
+
                 </div>
+                {{--
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card">
@@ -129,6 +339,7 @@
                         </div>
                     </div>
                 </div>
+                --}}
             </div>
         </div>
     </div>

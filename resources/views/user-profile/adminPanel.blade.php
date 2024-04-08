@@ -6,7 +6,11 @@
 
 
 @section('content')
-
+<style>
+    body {
+background-image: url("pic7.png");
+}
+</style>
 
 <div class="album py-3" style="background-color: rgba(22, 24, 22, 0.5);">
   <div class="container" >

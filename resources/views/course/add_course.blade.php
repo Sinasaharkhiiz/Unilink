@@ -51,14 +51,14 @@
 
               <div class="col-6">
                 <label for="content" class="form-label">بارگذاری جزوه</label>
-                <input class="form-control" name="content" type="file" id="content">
+                <input class="form-control" accept=".pdf" name="content" type="file" id="content">
                 <div class="invalid-feedback">
                   Valid content is required.
                 </div>
               </div>
               <div class="col-6">
                 <label for="cover" class="form-label">کاور جزوه <span >(اختیاری)</span></label>
-                <input class="form-control" name="cover" type="file" id="cover" placeholder=".png">
+                <input class="form-control" accept=".gif,.jpg,.jpeg,.GIF,.png,.PNG,.JPG,.JPEG,.bmp,.BMP" name="cover" type="file" id="cover" placeholder=".png">
                 <div class="invalid-feedback">
                   Valid cover is required.
                 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    صفحه مدرس |
+    صفحه مدرس | {{$u_data->name}}
 @endsection
 
 
@@ -14,7 +14,7 @@
                 <div class="card bg-dark">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{$u_data->avatar}}" alt="Admin" class="rounded-circle p-1 bg-light" width="110">
+                            <img src="{{'storage/'.$u_data->avatar}}" alt="Admin" class="rounded-circle p-1 bg-light" width="110">
                             <div class="mt-3">
                                 <h4 class="text-light mb-1">{{$u_data->name}}</h4>
                                 <hr>

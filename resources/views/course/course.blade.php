@@ -51,9 +51,15 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9 text-secondary" id="comments">
                                 @if ($Check_student)
-                                <a href={{"storage/".$c_data->content}}>
-                                <button type="button" class="btn btn-success" >بارگیری جزوه</button>
-                                </a>
+
+                                <form method="POST" action="{{"storage/".$c_data->content}}" style="display: inline">
+                                    @csrf
+                                <button type="submit" class="btn btn-success" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+                                    <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+                                  </svg> بارگیری جزوه</button>
+                                </form>
+
                                 <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">نظر دادن </button>
                                 <form class="needs-validation" novalidate method="post" action="course/{id}" enctype="multipart/form-data">
                                     @csrf
@@ -169,7 +175,7 @@
                 <div class="card bg-dark">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{$p_data->avatar}}" alt="Admin" class="rounded-circle p-1 bg-light" width="110">
+                            <img src="{{'storage/'.$p_data->avatar}}" alt="Admin" class="rounded-circle p-1 bg-light" width="110">
                             <div class="mt-3">
                                 <h4 class="text-light">{{$p_data->name}}</h4>
                                 <p class="text-secondary mb-1">منتشر کننده</p>

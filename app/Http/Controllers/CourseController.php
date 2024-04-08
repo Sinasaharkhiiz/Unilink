@@ -99,13 +99,13 @@ class CourseController extends Controller
         } elseif(request('order')) {
             if(request()->order=="newest"){
             $c_data = Course::orderBy('created_at', 'DESC')->paginate(9);
-            $c_order = "(جدبد ترین)";
+            $c_order = "جدید ترین";
             }elseif(request()->order=="cheapest"){
             $c_data = Course::orderBy('price')->paginate(9);
-            $c_order = "(ارزان ترین)";
-            }else{
-                $c_data = Course::orderBy('created_at', 'DESC')->paginate(9);
-                $c_order = "(جدید ترین)";
+            $c_order = "ارزان ترین";
+            }elseif(request()->order=="oldest"){
+                $c_data = Course::orderBy('created_at')->paginate(9);
+                $c_order = "قدیمی ترین";
             }
         }else{
             $c_data = Course::orderBy('created_at', 'DESC')->paginate(9);
@@ -144,7 +144,7 @@ class CourseController extends Controller
                     // user found
                     toast('شما قبلا این جزوه ررا خریداری کرده اید!','warning')->position('top');
              }
-        return view('home');
+             return redirect('course'.'?id='.$req->input('c_id'));
     }
 
     public function show_courses_management()
@@ -171,4 +171,5 @@ class CourseController extends Controller
         toast('جزوه با موفقیت حذف شد','success')->position('top');
         return redirect('courses_management');
     }
+
 }

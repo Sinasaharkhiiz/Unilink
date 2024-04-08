@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/course/{id}',[CourseController::class, 'add_comment']);
     Route::get('/teacher',[Controller::class, 'show_teacher']);
     Route::get('/course',[CourseController::class, 'show_course']);
+    Route::get('/edit_profile',[Controller::class, 'edit_profile']);
+    Route::post('/update_user',[Controller::class , 'update_user']);
+    Route::post('/update_profile',[Controller::class , 'update_profile']);
+    Route::post('/update_user_contact',[Controller::class , 'update_user_contact']);
     Route::post('/delete_comment/{id}',[CourseController::class, 'delete_comment']);
     Route::middleware(['roleChecker:super_admin,null,null'])->group(function () {
     Route::get('/edit_user',[Controller::class, 'edit_user']);
