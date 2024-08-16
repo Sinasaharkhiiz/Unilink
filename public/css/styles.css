@@ -35,3 +35,31 @@ html {
     height: 60px;
     background-color: #e7e7e7;
 }
+
+.header-carousel .header-carousel-item-img-1,
+.header-carousel .header-carousel-item-img-2,
+.header-carousel .header-carousel-item-img-3 {
+    position: relative;
+    overflow: hidden;
+}
+
+.header-carousel .header-carousel-item-img-1::before,
+.header-carousel .header-carousel-item-img-2::before,
+.header-carousel .header-carousel-item-img-3::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    top: -300px;
+    right: -300px;
+    border-radius: 300px;
+    border: 100px solid rgba(68, 210, 246, 0.2);
+    animation: RotateMoveCircle 10s linear infinite;
+    background: transparent;
+    z-index: 2 !important;
+}
+
+.txt-carousel{
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+}

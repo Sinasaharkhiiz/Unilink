@@ -38,7 +38,7 @@
     font-style: normal
 }
       </style>
-        <nav class="navbar fixed-top bg-primary navbar-expand-lg bg-body-tertiary" style="margin-bottom: 40px; opacity: .90 !important;" data-bs-theme="dark" >
+        <nav class="navbar fixed-top bg-primary navbar-expand-lg bg-body-tertiary" style="border-radius: 25px; margin-bottom: 40px; opacity: .90 !important;" data-bs-theme="dark" >
             <div class="container-fluid">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -58,6 +58,21 @@
                       <li><a class="dropdown-item" href="#">دوره های آموزشی</a></li>
                     </ul>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="quiz">مسابقه</a>
+                  </li>
+                </li>
+                <li class="nav-item">
+                @if (Auth::check())
+                  @if (Auth::user()->role=='student')
+                  <a class="nav-link" aria-current="page" href="teach">تدریس</a>
+                  @else
+                  <a class="nav-link" aria-current="page" href="add_course">افزودن‌جزوه</a>
+                  @endif
+                @else
+                <a class="nav-link" aria-current="page" href="teach">تدریس</a>
+                @endif
+                </li>
                 </ul>
                 <!--
                 <form class="d-flex" role="search" method="GET" style="margin-left: auto; " >
@@ -156,7 +171,7 @@
       <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
         <img src="pic2.png " style="margin-right:auto margin_left:auto; width: 100px;">
       </a>
-      <span class="mb-3 mb-md-0 text-light">&copy; 2024 Uni link, Inc</span>
+      <span class="mb-3 mb-md-0 text-light">&copy; 2024 Uni link | SinaSaharkhiz</span>
     </div>
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">

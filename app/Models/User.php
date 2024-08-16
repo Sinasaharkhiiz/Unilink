@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Teach;
 use App\Models\Course;
 use App\Models\Profile;
 use Laravel\Sanctum\HasApiTokens;
@@ -54,5 +55,9 @@ class User extends Authenticatable
 
     public function profile(){
         return $this->hasOne(Profile::class);
+    }
+
+    public function teach(){
+        return $this->hasOne(Teach::class);
     }
 }

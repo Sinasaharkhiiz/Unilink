@@ -42,7 +42,7 @@
                                 @if($c_data->price==0)
                                     <p><strong class="text-success"> رایگان </strong></p>
                                 @else
-                                    <p><strong>{{"قیمت :".$c_data->price." "."تومان"}}</strong></p>
+                                    <p><strong>{{$c_data->price." "."تومان"}}</strong></p>
                                 @endif
                                 </h6>
                             </div>
@@ -50,6 +50,9 @@
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9 text-secondary" id="comments">
+                                @if (Auth::user()->role=='super_admin' || Auth::user()->role=='admin' || Auth::user()->id== $p_data->id)
+                                <button type="button" class="btn btn-warning "><a href={{'courses_management?search='.$c_data->id}} class="nav-link">ویرایش جزوه</a></button>
+                                @endif
                                 @if ($Check_student)
 
                                 <form method="POST" action="{{"storage/".$c_data->content}}" style="display: inline">
@@ -60,8 +63,7 @@
                                   </svg> بارگیری جزوه</button>
                                 </form>
 
-                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">نظر دادن </button>
-                                <form class="needs-validation" novalidate method="post" action="course/{id}" enctype="multipart/form-data">
+                                <form class="needs-validation" novalidate method="post" action="course/{id}" enctype="multipart/form-data" style="display: inline">
                                     @csrf
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
                                   <div class="modal-dialog">
@@ -76,37 +78,6 @@
                                             <label for="recipient-name" class="col-form-label">جزوه:</label>
                                             <input type="text" class="form-control" id="recipient-name" value="{{$c_data->name}}" readonly>
                                             <input type="text" name="c_id" class="form-control" id="re-name" value="{{$c_data->id}}" readonly hidden>
-
-                                          </div>
-                                          <div class="mb-3">
-                                            <label for="message-text" class="col-form-label">امتیاز:</label>
-                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="display:block">
-                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked>
-                                                <label class="btn btn-outline-light" style=" width: 66px; " for="btnradio5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="margin-bottom: 5px;">
-                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                  </svg> 5 </label>
-
-                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                                                <label class="btn btn-outline-light" style=" width: 66px; " for="btnradio4"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="margin-bottom: 5px;">
-                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                  </svg> 4 </label>
-
-                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                                                <label class="btn btn-outline-light" style=" width: 66px; " for="btnradio3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-half" viewBox="0 0 16 16"  style="margin-bottom: 5px;">
-                                                    <path d="M5.354 5.119 7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.548.548 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.52.52 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.58.58 0 0 1 .085-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.565.565 0 0 1 .162-.505l2.907-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.001 2.223 8 2.226v9.8z"/>
-                                                  </svg> 3 </label>
-
-                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                                <label class="btn btn-outline-light" style=" width: 66px; " for="btnradio2"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" style="margin-bottom: 5px;">
-                                                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                                                  </svg> 2 </label>
-
-                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-                                                <label class="btn btn-outline-light" style=" width: 66px; " for="btnradio1"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" style="margin-bottom: 5px;">
-                                                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                                                  </svg> 1 </label>
-                                              </div>
-
                                           </div>
                                           <div class="mb-3">
                                             <label for="message-text" class="col-form-label">نظر:</label>
@@ -123,9 +94,61 @@
                                 </div>
                                 </form>
 
-                                @else
-                                <form class="needs-validation" style="display: inline" novalidate method="post" action="buy_course" enctype="multipart/form-data">
+                                    <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                                        <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
+                                      </svg>  دیدگاه  </button>
+                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@getbootstrap"> ثبت امتیاز </button>
+                                <form class="needs-validation" novalidate method="post" action="rate/{id}" enctype="multipart/form-data">
                                     @csrf
+                                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">امتیاز جدید</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <form>
+                                          <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">جزوه:</label>
+                                            <input type="text" class="form-control" id="recipient-name" value="{{$c_data->name}}" readonly>
+                                            <input type="text" name="c_id" class="form-control" id="re-name" value="{{$c_data->id}}" readonly hidden>
+
+                                          </div>
+                                          <div class="mb-3">
+                                            <label for="message-text" class="col-form-label">امتیاز:</label>
+                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="display:block">
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio5" value="5" autocomplete="off" checked>
+                                                <label class="btn btn-outline-light" style=" width: 65px; " for="btnradio5"> 5 </label>
+
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" value="4" autocomplete="off">
+                                                <label class="btn btn-outline-light" style=" width: 65px; " for="btnradio4">  4 </label>
+
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" value="3" autocomplete="off">
+                                                <label class="btn btn-outline-light" style=" width: 65px; " for="btnradio3">  3 </label>
+
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="2" autocomplete="off">
+                                                <label class="btn btn-outline-light" style=" width: 65px; " for="btnradio2"> 2 </label>
+
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" value="1" autocomplete="off">
+                                                <label class="btn btn-outline-light" style=" width: 65px; " for="btnradio1"> 1 </label>
+                                              </div>
+
+                                          </div>
+                                        </form>
+                                      </div>
+                                      <div class="modal-footer" style="flex-direction: row-reverse">
+                                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">بازگشت</button>
+                                        <button type="submit" class="btn btn-light">ثبت</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                </form>
+
+                                @else
+                                <form class="needs-validation" style="display: inline" novalidate method="get" action="payment" enctype="multipart/form-data">
                                 <input type="text" name="c_id" class="form-control" id="re-name" value="{{$c_data->id}}" readonly hidden>
                                 <input type="submit" class="btn btn-success px-4" value="افزودن به سبد خرید">
                                 </form>
@@ -221,9 +244,11 @@
         <div style="background-color: rgba(22, 24, 22, 0.6); border-radius: 10px" >
             <div class="card-body">
                 <div class="row mb-3">
-                    <div class="col-sm-3">
-                        <h3 class="mb-0 text-light">نظرات:</h3>
+                    <div class="col-sm-4">
+                        <h3 class="mb-0 text-light" style="display: inline">دیدگاه و پرسش:</h3>
+
                     </div>
+
                 </div>
                 @if($co_data->total() != 0)
                 @foreach ($co_data as $key => $value)
@@ -233,7 +258,8 @@
                     <div class="col-sm-10 text-secondary" style="padding-bottom: 20px">
                         <div class="mb-0" style="background-color: rgba(22, 24, 22, 0.9); border-radius: 10px">
                             <?php $sender = User::find($value->sender_id)?>
-                            <div style="margin-right: 10px">{{$sender->name}}</div>
+                            <img src="{{'storage/'.$sender->avatar}}" alt="Admin" class="rounded-circle p-0 bg-light" width="50" style="display: inline; margin-right:5px;margin-top:5px;margin-bottom:5px">
+                            <div style="margin-right: 10px ; display:inline">{{$sender->name}}</div>
                             <br>
                             <h5 class="text-light" style="margin-right: 20px">{{$value->comment}}</h5>
                             @if (Auth::user()->id == $value->sender_id)

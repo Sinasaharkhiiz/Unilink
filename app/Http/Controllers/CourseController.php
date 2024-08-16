@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Comment;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,12 +31,13 @@ class CourseController extends Controller
     public function store(Request $req)
     {
         $course = new Course;
-        $fileName = $req->input('name').rand(100,1000).".pdf";
+        $date = Carbon::now()->format('Y-m-d');
+        $fileName = Auth::user()->id. '_' . $date .".pdf";
         $course->price=$req->input('price');
         $course->name=$req->input('name');
         $course->content=$req->file('content')->storeAs('courses',$fileName , 'public');
         if($req->hasFile('cover')){
-            $course_cover = $req->input('name').rand(100,1000).".png";
+            $course_cover = Auth::user()->id. '_' . $date .".png";
             $course->cover=$req->file('cover')->storeAs('courses_cover',$course_cover , 'public');
         }
         $course->description = $req->input('description');
@@ -52,6 +54,25 @@ class CourseController extends Controller
         $comment->comment=$req->input('comment');
         $comment->save();
         toast('نظر شما با موفقیت ثبت شد','success')->position('top');
+        return redirect('course/'.'?id='.$req->input('c_id'));
+    }
+    public function add_rate(Request $req)
+    {
+        DB::table('course_user')->updateOrInsert(
+            [
+                'user_id' => Auth::user()->id,
+                'course_id' => $req->input('c_id')
+            ],
+            [
+                'rate' => $req->input('btnradio'),
+                'updated_at' => now(),
+            ]
+        );
+        $course=Course::find($req->input('c_id'));
+        $averageRate = DB::table('course_user')->where('course_id', $req->input('c_id'))->where('rate', '>', 0)->avg('rate');
+        $course->rate=$averageRate;
+        $course->save();
+        toast('امتیاز شما با موفقیت ثبت شد','success')->position('top');
         return redirect('course/'.'?id='.$req->input('c_id'));
     }
 
@@ -103,12 +124,16 @@ class CourseController extends Controller
             }elseif(request()->order=="cheapest"){
             $c_data = Course::orderBy('price')->paginate(9);
             $c_order = "ارزان ترین";
-            }elseif(request()->order=="oldest"){
-                $c_data = Course::orderBy('created_at')->paginate(9);
-                $c_order = "قدیمی ترین";
+            #}#elseif(request()->order=="oldest"){
+                #$c_data = Course::orderBy('created_at')->paginate(9);
+                #$c_order = "قدیمی ترین";
+            }elseif(request()->order=="best"){
+                $c_data = Course::orderByRaw('downloads * 0.6 + rate * 0.4 DESC')->paginate(9);
+                $c_order = "برترین";
             }
         }else{
-            $c_data = Course::orderBy('created_at', 'DESC')->paginate(9);
+            $c_data = Course::orderByRaw('downloads * 0.6 + rate * 0.4 DESC')->paginate(9);
+                $c_order = "برترین";
         }
         return view('course.courses', ['c_data'=> $c_data, 'c_order'=>$c_order]);
     }
@@ -133,11 +158,14 @@ class CourseController extends Controller
     public function buy_course(Request $req)
     {
         $course = Course::find($req->input('c_id'));
+        $downloads=$course->users->count();
         $user= User::find(Auth::user()->id);
         $student = DB::table('course_user')->where('user_id',Auth::user()->id)->where('course_id',$req->input('c_id'))->get();
         if(!$student->toArray()){
                     //user is not found
                     $user->courses()->save($course);
+                    $course->downloads=$downloads+1;
+                    $course->save();
                     toast('جزوه با موفقیت خریداری شد','success')->position('top');
              }
              if($student->toArray()){

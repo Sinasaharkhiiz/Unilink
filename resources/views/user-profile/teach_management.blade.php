@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    صفحه کاربری ادمین
+   درخواست تدریس
 @endsection
 
 
@@ -24,7 +24,7 @@
 <div style="width:100%" class=" d-flex  justify-content-center align-items-center">
   <img src="pic2.png " style="margin-right:auto margin_left:auto; width: 100px;">
   <div class="vla"></div>
-  <h2 class="text-light">مدیریت اعضا</h2>
+  <h2 class="text-light">مدیریت درخواست های تدریس</h2>
 </div>
 <!-- search users -->
 <div style="width:100%" class=" d-flex  justify-content-center align-items-center" data-bs-theme="dark">
@@ -59,28 +59,50 @@
         @foreach ($all_users as $key => $value)
       <tr>
         <th scope="row">{{$counter}}</th>
-        <td>{{$value->name}}</td>
-        <td>{{$value->username}}</td>
+        <td>{{$value->user->name}}</td>
+        <td>{{$value->user->username}}</td>
         <!--<td>{{--$value->email--}}</td>-->
-        @if ($value->role=="super_admin")
+        @if ($value->user->role=="super_admin")
         <td>مدیر</td>
-        @elseif ($value->role=="student")
+        @elseif ($value->user->role=="student")
         <td>دانش آموز</td>
-        @elseif ($value->role=="teacher")
-        <td>مدرس</td>
         @endif
 
-        <td>{{$value->id}}</td>
-
+        <td>{{$value->user->id}}</td>
         <td>
           <!-- Button trigger modal (Delete User)-->
-        <button type="button" class="btn btn-danger btn-sm deleteUser" value="{{$value->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal">
-           حذف
+        <button type="button" class="btn btn-danger btn-sm delete_req" value="{{$value->id}}"  onclick="setValue(this)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+           رد درخواست
         </button>
 
 <!-- Modal (Delete User)-->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
-  <div class="modal-dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">رد درخواست</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" value="{{$value->id}}"></button>
+          </div>
+          <div class="modal-body">
+            <form class="needs-validation" novalidate method="post" action="delete_req/{id}" enctype="multipart/form-data">
+                @csrf
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">دلیل رد درخواست:</label>
+                <input type='text'class="form-control" name="message-text" id="message-text" required>
+              </div>
+
+          </div>
+          <div class="modal-footer" style="flex-direction: row-reverse">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">بازگشت</button>
+
+                <input type="text" name="req_id" class="form-control" id="req_id" readonly hidden>
+              <button type="submit" class="btn btn-danger">رد درخواست</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {{--
+    <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">حذف کاربر</h1>
@@ -99,11 +121,14 @@
       </div>
     </div>
   </div>
+  --}}
 </div>
 <!-- ----------------------- -->
         <div class="vl" style="display: inline-flex"></div>
-        <a class="btn btn-light btn-sm" href="edit_user?id={{$value->id}}" role="button">ویرایش</a>
-        </td>
+        <a class="btn btn-light btn-sm" href="edit_user?id={{$value->user_id}}" role="button">اطلاعات کاربر</a>
+        <div class="vl" style="display: inline-flex"></div>
+        <a class="btn btn-success btn-sm" href="accept_teach?id={{$value->id}}" role="button">پذیرفتن درخواست</a>
+    </td>
       </tr>
       @php
           $counter+=1;
@@ -115,7 +140,7 @@
         <div style="width:100%; height:300px" class=" d-flex  justify-content-center align-items-center">
           <h2 class="text-light" style="margin-left: 25px">404</h2>
           <div class="vla" ></div>
-          <h2 class="text-light">کاربری مطابق با اطلاعات وارد شده پیدا نشد .</h2>
+          <h2 class="text-light">درخوسات جدیدی برای تدریس یافت نشد.</h2>
         </div>
   @endif
       </div>
@@ -124,16 +149,12 @@
 
 @endsection
 @section('scripts')
+
     <script>
-      $(document).ready(function(){
-        $('.deleteUser').click(function(e){
-
-        e.preventDefault();
-
-        var user_id = $(this).val();
-        $('#user_id').val(user_id);
-        $('#deleteModal').modal('show');
-      });
-    });
+        function setValue(button) {
+            var input = document.getElementById('req_id');
+            input.value = button.value;
+            $('#deleteModal').modal('show');
+        }
     </script>
 @endsection
